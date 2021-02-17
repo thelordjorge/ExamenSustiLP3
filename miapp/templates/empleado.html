@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    {{titulo}}
+{% endblock title %}
+
+{% block content %}
+    <h1 class="title"> {{titulo}} </h1>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    
+    {% for empleado in empleados %}
+        <div class="articulo-item">
+            {% if empleado.imagen != 'null' %}
+                <div class="image">
+                    <img src="{{empleado.imagen.url}}" />
+                </div>
+            {% endif %}
+            <div class="data">
+                <h2>
+                    {{empleado.fullname}}
+                </h2>
+                {% if empleado.state %}
+                    <strong>
+                        Activo
+                    </strong>
+                {% else %}
+                    <strong>
+                        No Activo
+                    </strong>
+                {% endif %}
+                <p>
+                    {{empleado.job}}<br>
+                    
+                    <a href="{% url 'eliminar_empleado' id=empleado.id %}" class="btn btn-delete">
+                        Eliminar
+                    </a>
+                </p>
+            </div>
+            <div class="clearfix">
+            </div>
+        </div>    
+    {% endfor %}
+    
+{% endblock content %}
