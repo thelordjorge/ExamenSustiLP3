@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta chrset="utf-8" />
+        <title>
+            {% block title %}
+
+            {% endblock title %}
+            | Jorge Hoyos
+        </title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    </head>
+    <body>
+        <header>
+            <div id="logotipo">
+                <img src="{% static 'images/peru.png'%}"/>
+                <h1>
+                    Proyecto Web (LP3)
+                </h1>
+            </div>
+        </header>
+
+        <nav>
+            <ul>
+                <li>
+                    <a href="/inicio"><strong>Inicio</strong></a>
+                </li>
+                <li>
+                    <a href="/regiones"><strong>Regiones</strong></a>
+                </li>
+                <li>
+                    <a href="/crear_region"><strong>Crear Region</strong></a>
+                </li>
+                <li>
+                    <a href="/empleados"><strong>Empleados</strong></a>
+                </li>
+                <li>
+                    <a href="/crear_empleado"><strong>Crear Empleado</strong></a>
+                </li>
+            </ul>
+        </nav>
+        <div class="barra">
+            <span class="esquina-izquierda"></span>
+            <span class="relleno-barra"></span>
+            <span class="esquina-derecha"></span>
+        </div>
+
+        <div id="content">
+            <div class="box">
+                {% block content %}
+                    <strong>
+                        Contenido en Layout (Padre, mensaje por defecto, cuando no se define en los hijos)
+                    </strong>
+                {% endblock content %}
+            </div>      
+
+        </div>
+        <footer>
+            UNTELS - Lenguaje de Programacion III &copy; Jorge Hoyos
+        </footer>
+    </body>
+
+</html>
